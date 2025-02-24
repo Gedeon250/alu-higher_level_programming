@@ -2,6 +2,7 @@
 # This function prints the last digit of a number
 # @number: The number to be inputted by the user
 
+
 def print_last_digit(number):
     if number > 0:
         print(f"{number % 10}", end="")
@@ -20,4 +21,3 @@ def print_last_digit(number):
     print(f"{abs(number) % 10}", end="")
     return (abs(number) % 10)
 '''
-
