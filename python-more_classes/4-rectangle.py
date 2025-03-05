@@ -10,7 +10,7 @@ class Rectangle:
         :param width: The width of the initiated rectangle
         :type width: int
         :param height: The height of the initiated rectangle
-        :typr height: int
+        :type height: int
         """
         self.width = width
         self.height = height
@@ -43,13 +43,13 @@ class Rectangle:
 
     def area(self):
         """Return the area of the Rectangle."""
-        return (self.__width * self.__height)
+        return self.__width * self.__height
 
     def perimeter(self):
         """Return the perimeter of the Rectangle."""
         if self.__width == 0 or self.__height == 0:
-            return (0)
-        return ((self.__width * 2) + (self.__height * 2))
+            return 0
+        return (self.__width * 2) + (self.__height * 2)
 
     def __str__(self):
         """Return the printable representation of the Rectangle.
@@ -57,40 +57,41 @@ class Rectangle:
         Represents the rectangle with the # character.
         """
         if self.__width == 0 or self.__height == 0:
-            return ("")
+            return ""
 
         rect = []
         for i in range(self.__height):
             [rect.append('#') for j in range(self.__width)]
             if i != self.__height - 1:
                 rect.append("\n")
-        return ("".join(rect))
+        return "".join(rect)
 
     def __repr__(self):
         """Return the string representation of the Rectangle."""
         rect = "Rectangle(" + str(self.__width)
         rect += ", " + str(self.__height) + ")"
-        return (rect)
-# comment here
+        return rect
 
 
-#my_rectangle = Rectangle(2, 4)
-#print(str(my_rectangle))
-#print("--")
-#print(my_rectangle)
-#print("--")
-#print(repr(my_rectangle))
-#print("--")
-#print(hex(id(my_rectangle)))
-#print("--")
+# Comment here
 
-# create new instance based on representation
-#new_rectangle = eval(repr(my_rectangle))
-#print(str(new_rectangle))
-#print("--")
-#print(new_rectangle)
-#print("--")
-#print(repr(new_rectangle))
-#print("--")
-#print(hex(id(new_rectangle)))
-#print("--")
+# my_rectangle = Rectangle(2, 4)
+# print(str(my_rectangle))
+# print("--")
+# print(my_rectangle)
+# print("--")
+# print(repr(my_rectangle))
+# print("--")
+# print(hex(id(my_rectangle)))
+# print("--")
+
+# Create new instance based on representation
+# new_rectangle = eval(repr(my_rectangle))
+# print(str(new_rectangle))
+# print("--")
+# print(new_rectangle)
+# print("--")
+# print(repr(new_rectangle))
+# print("--")
+# print(hex(id(new_rectangle)))
+# print("--")
