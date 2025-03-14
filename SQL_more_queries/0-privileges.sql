@@ -1,10 +1,14 @@
--- Reset privileges for user_0d_1
-REVOKE ALL PRIVILEGES ON *.* FROM 'user_0d_1'@'localhost';
+-- Ensure the users exist
+CREATE USER IF NOT EXISTS 'user_0d_1'@'localhost';
+CREATE USER IF NOT EXISTS 'user_0d_2'@'localhost';
+
+-- Grant appropriate privileges
 GRANT ALL PRIVILEGES ON *.* TO 'user_0d_1'@'localhost';
+GRANT SELECT, INSERT ON *.* TO 'user_0d_2'@'localhost';
 
--- Reset privileges for user_0d_2
-REVOKE ALL PRIVILEGES ON *.* FROM 'user_0d_2'@'localhost';
-GRANT SELECT, INSERT ON user_2_db.* TO 'user_0d_2'@'localhost';
-
--- Apply changes
+-- Apply the changes
 FLUSH PRIVILEGES;
+
+-- List all privileges of user_0d_1 and user_0d_2
+SHOW GRANTS FOR 'user_0d_1'@'localhost';
+SHOW GRANTS FOR 'user_0d_2'@'localhost';
