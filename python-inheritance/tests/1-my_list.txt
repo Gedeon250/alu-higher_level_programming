@@ -1,0 +1,27 @@
+Test 1: Append elements and check the list
+Input:
+my_list = MyList()
+my_list.append(1)
+my_list.append(4)
+my_list.append(2)
+my_list.append(3)
+my_list.append(5)
+print(my_list)
+
+Expected Output:
+[1, 4, 2, 3, 5]
+
+Test 2: Print the list in sorted order
+Input:
+my_list.print_sorted()
+
+Expected Output:
+[1, 2, 3, 4, 5]
+
+Test 3: Check if the original list remains unchanged
+Input:
+print(my_list)
+
+Expected Output:
+[1, 4, 2, 3, 5]
+
