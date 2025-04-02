@@ -1,0 +1,52 @@
+The ``3-say_my_name`` module
+=========================
+
+Using ``say_my_name``
+-------------------
+
+Import the function:
+    >>> say_my_name = __import__('3-say_my_name').say_my_name
+
+Test basic functionality:
+    >>> say_my_name("John", "Smith")
+    My name is John Smith
+
+Test with only first name:
+    >>> say_my_name("Bob")
+    My name is Bob 
+
+Test with empty last name:
+    >>> say_my_name("Alice", "")
+    My name is Alice 
+
+Test with spaces in names:
+    >>> say_my_name("Walter", "White")
+    My name is Walter White
+
+Test first name not string:
+    >>> try:
+    ...     say_my_name(12, "White")
+    ... except Exception as e:
+    ...     print(e)
+    first_name must be a string
+
+Test last name not string:
+    >>> try:
+    ...     say_my_name("John", 12)
+    ... except Exception as e:
+    ...     print(e)
+    last_name must be a string
+
+Test both names not string:
+    >>> try:
+    ...     say_my_name(12, 13)
+    ... except Exception as e:
+    ...     print(e)
+    first_name must be a string
+
+Test missing arguments:
+    >>> try:
+    ...     say_my_name()
+    ... except Exception as e:
+    ...     print(e)
+    say_my_name() missing 1 required positional argument: 'first_name'
