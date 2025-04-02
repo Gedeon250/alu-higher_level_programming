@@ -1,0 +1,82 @@
+The ``5-text_indentation`` module
+============================
+
+Using ``text_indentation``
+---------------------
+
+Import function from module:
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Test basic string:
+    >>> text_indentation("Hello. World? Yes: No.")
+    Hello.
+    <BLANKLINE>
+    World?
+    <BLANKLINE>
+    Yes:
+    <BLANKLINE>
+    No.
+    <BLANKLINE>
+
+Test string with multiple spaces:
+    >>> text_indentation("   Hello.   World?   ")
+    Hello.
+    <BLANKLINE>
+    World?
+    <BLANKLINE>
+
+Test string with no special characters:
+    >>> text_indentation("Hello World")
+    Hello World
+
+Test empty string:
+    >>> text_indentation("")
+
+Test string with only special characters:
+    >>> text_indentation(".?:")
+    .
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+
+Test non-string input:
+    >>> text_indentation(12)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+Test None input:
+    >>> text_indentation(None)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+Test multiple consecutive special characters:
+    >>> text_indentation("Hello... World??? Yes:::")
+    Hello.
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    World?
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+    Yes:
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+
+Test newlines in input:
+    >>> text_indentation("Hello.\nWorld?\nYes:")
+    Hello.
+    <BLANKLINE>
+    World?
+    <BLANKLINE>
+    Yes:
+    <BLANKLINE>
