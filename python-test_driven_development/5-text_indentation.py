@@ -17,11 +17,13 @@ def text_indentation(text):
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
+    text = text.strip()  # Remove leading and trailing spaces
+
     i = 0
     while i < len(text):
         # Print current character
         print(text[i], end="")
-        
+
         # If character is ., ? or :, print two newlines
         if text[i] in ".?:":
             print("\n")
