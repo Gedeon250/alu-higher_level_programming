@@ -1,27 +1,73 @@
->>> matrix = [[4, 8, 12], [16, 20, 24]]
->>> matrix_divided(matrix, 4)
-[[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
+The ``2-matrix_divided`` module
+============================
 
->>> matrix = [[2, 4], [6, 8]]
->>> matrix_divided(matrix, 2)
-[[1.0, 2.0], [3.0, 4.0]]
+Using ``matrix_divided``
+---------------------
 
->>> matrix = [[1, 2, 3], [4, 5, 6]]
->>> matrix_divided(matrix, 3)
-[[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+First import the function from the module:
+    >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
 
->>> matrix = [[1, 2], [3, 4, 5]]
->>> matrix_divided(matrix, 2)
-Traceback (most recent call last):
-    ...
-TypeError: Each row of the matrix must have the same size
+Now test regular division:
+    >>> matrix = [[1, 2, 3], [4, 5, 6]]
+    >>> matrix_divided(matrix, 4)
+    [[0.25, 0.5, 0.75], [1.0, 1.25, 1.5]]
 
->>> matrix_divided([[1, "a"], [3, 4]], 2)
-Traceback (most recent call last):
-    ...
-TypeError: matrix must be a matrix (list of lists) of integers/floats
+Test that original matrix is unchanged:
+    >>> matrix
+    [[1, 2, 3], [4, 5, 6]]
 
->>> matrix_divided([[1, 2], [3, 4]], 0)
-Traceback (most recent call last):
-    ...
-ZeroDivisionError: division by zero
+Test division by 2:
+    >>> matrix = [[2, 4, 6], [8, 10, 12]]
+    >>> matrix_divided(matrix, 2)
+    [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
+
+Test division with negative numbers:
+    >>> matrix = [[-1, -2, -3], [-4, -5, -6]]
+    >>> matrix_divided(matrix, 2)
+    [[-0.5, -1.0, -1.5], [-2.0, -2.5, -3.0]]
+
+Test division with floats:
+    >>> matrix = [[1.5, 2.5, 3.5], [4.5, 5.5, 6.5]]
+    >>> matrix_divided(matrix, 2)
+    [[0.75, 1.25, 1.75], [2.25, 2.75, 3.25]]
+
+Test division by negative number:
+    >>> matrix = [[1, 2, 3], [4, 5, 6]]
+    >>> matrix_divided(matrix, -3)
+    [[-0.33, -0.67, -1.0], [-1.33, -1.67, -2.0]]
+
+Test empty matrix:
+    >>> matrix = []
+    >>> matrix_divided(matrix, 2)
+    Traceback (most recent call last):
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Test matrix with wrong type:
+    >>> matrix = "not a matrix"
+    >>> matrix_divided(matrix, 2)
+    Traceback (most recent call last):
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Test matrix with rows of different sizes:
+    >>> matrix = [[1, 2, 3], [4, 5]]
+    >>> matrix_divided(matrix, 2)
+    Traceback (most recent call last):
+    TypeError: Each row of the matrix must have the same size
+
+Test division by zero:
+    >>> matrix = [[1, 2, 3], [4, 5, 6]]
+    >>> matrix_divided(matrix, 0)
+    Traceback (most recent call last):
+    ZeroDivisionError: division by zero
+
+Test division by non-number:
+    >>> matrix = [[1, 2, 3], [4, 5, 6]]
+    >>> matrix_divided(matrix, "2")
+    Traceback (most recent call last):
+    TypeError: div must be a number
+
+Test matrix with non-numbers:
+    >>> matrix = [[1, "2", 3], [4, 5, 6]]
+    >>> matrix_divided(matrix, 2)
+    Traceback (most recent call last):
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
