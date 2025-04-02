@@ -17,19 +17,15 @@ def text_indentation(text):
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
-    # Remove spaces at the beginning and end of each line
-    text = text.strip()
-
-    # Replace characters with character + 2 newlines
-    for delim in ".?:":
-        text = text.replace(delim, delim + "\n\n")
-
-    # Split text into lines
-    lines = text.split("\n")
-
-    # Print each line with proper formatting
-    for i, line in enumerate(lines):
-        if i != len(lines) - 1:
-            print(line.strip())
-        else:
-            print(line.strip(), end="")
+    i = 0
+    while i < len(text):
+        # Print current character
+        print(text[i], end="")
+        
+        # If character is ., ? or :, print two newlines
+        if text[i] in ".?:":
+            print("\n")
+            # Skip spaces after special characters
+            while i + 1 < len(text) and text[i + 1] == " ":
+                i += 1
+        i += 1
