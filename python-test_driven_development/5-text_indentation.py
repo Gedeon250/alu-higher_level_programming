@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 """
-Module for text_indentation function.
+Module for text_indentation function
 """
 
 
 def text_indentation(text):
     """
-    Prints a text with 2 new lines after each of these characters: ., ? and :
+    Prints text with 2 new lines after each '.', '?', and ':' characters.
 
     Args:
         text (str): The input text to be processed
@@ -17,17 +17,23 @@ def text_indentation(text):
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
-    text = text.strip()  # Remove leading and trailing spaces
+    # Initialize variables
+    result = ""
+    skip_space = False
 
-    i = 0
-    while i < len(text):
-        # Print current character
-        print(text[i], end="")
+    # Process each character
+    for char in text:
+        # Skip space if previous char was delimiter
+        if skip_space and char == " ":
+            continue
 
-        # If character is ., ? or :, print two newlines
-        if text[i] in ".?:":
-            print("\n")
-            # Skip spaces after special characters
-            while i + 1 < len(text) and text[i + 1] == " ":
-                i += 1
-        i += 1
+        result += char
+        skip_space = False
+
+        # Add two newlines after delimiters
+        if char in ".?:":
+            result += "\n\n"
+            skip_space = True
+
+    # Print result without trailing whitespace
+    print(result.strip(), end="")

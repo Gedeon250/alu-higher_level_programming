@@ -1,56 +1,101 @@
->>> text_indentation = __import__('5-text_indentation').text_indentation
->>> text_indentation("Hello. World? Yes:")
-Hello.
-<BLANKLINE>
-World?
-<BLANKLINE>
-Yes:
-<BLANKLINE>
->>> text_indentation("   Hello.   World?   ")
-Hello.
-<BLANKLINE>
-World?
-<BLANKLINE>
->>> text_indentation("Hello.\nWorld?\nYes:")
-Hello.
-<BLANKLINE>
-World?
-<BLANKLINE>
-Yes:
-<BLANKLINE>
->>> text_indentation(".?:")
-.
-<BLANKLINE>
-?
-<BLANKLINE>
-:
-<BLANKLINE>
->>> try:
-...     text_indentation(12)
-... except Exception as e:
-...     print(e)
-text must be a string
->>> try:
-...     text_indentation(None)
-... except Exception as e:
-...     print(e)
-text must be a string
->>> text_indentation("Hello... World??? Yes:::")
-Hello.
-<BLANKLINE>
-.
-<BLANKLINE>
-.
-<BLANKLINE>
-World?
-<BLANKLINE>
-?
-<BLANKLINE>
-?
-<BLANKLINE>
-Yes:
-<BLANKLINE>
-:
-<BLANKLINE>
-:
-<BLANKLINE>
+The ``5-text_indentation`` module
+============================
+
+Using ``text_indentation``
+---------------------
+
+Import the function:
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Test basic string:
+    >>> text_indentation("Hello. World? Yes: No.")
+    Hello.
+    <BLANKLINE>
+    World?
+    <BLANKLINE>
+    Yes:
+    <BLANKLINE>
+    No.
+    <BLANKLINE>
+
+Test string with multiple spaces:
+    >>> text_indentation("Hello.   World?    Yes:   No.")
+    Hello.
+    <BLANKLINE>
+    World?
+    <BLANKLINE>
+    Yes:
+    <BLANKLINE>
+    No.
+    <BLANKLINE>
+
+Test string with no delimiters:
+    >>> text_indentation("Hello World")
+    Hello World
+
+Test empty string:
+    >>> text_indentation("")
+
+Test string with only delimiters:
+    >>> text_indentation(".?:")
+    .
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+
+Test string with newlines:
+    >>> text_indentation("Hello.\nWorld?\nYes:\nNo.")
+    Hello.
+    <BLANKLINE>
+    World?
+    <BLANKLINE>
+    Yes:
+    <BLANKLINE>
+    No.
+    <BLANKLINE>
+
+Test non-string input:
+    >>> text_indentation(12)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+Test None input:
+    >>> text_indentation(None)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+Test multiple consecutive delimiters:
+    >>> text_indentation("Hello... World??? Yes::: No...")
+    Hello.
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    World?
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+    Yes:
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+    No.
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+
+Test spaces at beginning and end:
+    >>> text_indentation("   Hello.   World?   ")
+    Hello.
+    <BLANKLINE>
+    World?
+    <BLANKLINE>
