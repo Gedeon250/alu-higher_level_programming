@@ -17,23 +17,20 @@ def text_indentation(text):
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
-    # Initialize variables
-    result = ""
-    skip_space = False
-
-    # Process each character
-    for char in text:
-        # Skip space if previous char was delimiter
-        if skip_space and char == " ":
-            continue
-
-        result += char
-        skip_space = False
-
-        # Add two newlines after delimiters
-        if char in ".?:":
-            result += "\n\n"
-            skip_space = True
-
-    # Print result without trailing whitespace
-    print(result.strip(), end="")
+    i = 0
+    while i < len(text):
+        # Skip leading spaces at start of line
+        while i < len(text) and text[i] == ' ':
+            i += 1
+            
+        # Print current character
+        if i < len(text):
+            print(text[i], end="")
+            
+        # Handle delimiters
+        if i < len(text) and text[i] in ".?:":
+            print("\n")
+            # Skip spaces after delimiter
+            while i + 1 < len(text) and text[i + 1] == ' ':
+                i += 1
+        i += 1
