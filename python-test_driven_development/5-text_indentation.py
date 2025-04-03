@@ -1,27 +1,36 @@
 #!/usr/bin/python3
-"""Defines a text-indentation function."""
+"""
+Module for text_indentation function.
+"""
 
 
 def text_indentation(text):
-    """A function that prints two new lines after the char ...
-        :param text:
-        :type text:; string
-        :raise TypeError: if text is not a string
-        """
+    """
+    Prints a text with 2 new lines after each of these characters: ., ? and :
+
+    Args:
+        text (str): The input text to be processed
+
+    Raises:
+        TypeError: If text is not a string
+    """
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
-    c = 0
-    while c < len(text) and text[c] == ' ':
-        c += 1
+    text = text.strip()  # Strip leading/trailing spaces
+    result = ""  # Initialize a result string
 
-    while c < len(text):
-        print(text[c], end="")
-        if text[c] == "\n" or text[c] in ".?:":
-            if text[c] in ".?:":
-                print("\n")
-            c += 1
-            while c < len(text) and text[c] == ' ':
-                c += 1
-            continue
-        c += 1
+    i = 0
+    while i < len(text):
+        char = text[i]
+        if char in ".?:":  # Special characters that need new lines
+            result += char + "\n\n"  # Append character with two newlines
+            i += 1
+            # Skip consecutive spaces after special characters
+            while i < len(text) and text[i] == " ":
+                i += 1
+        else:
+            result += char
+            i += 1
+
+    print(result.strip())  # Print the final result, stripped of extra spaces
