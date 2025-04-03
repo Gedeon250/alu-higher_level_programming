@@ -1,27 +1,62 @@
-Test 1: Append elements and check the list
-Input:
-my_list = MyList()
-my_list.append(1)
-my_list.append(4)
-my_list.append(2)
-my_list.append(3)
-my_list.append(5)
-print(my_list)
+The ``1-my_list`` module
+======================
 
-Expected Output:
-[1, 4, 2, 3, 5]
+Using ``MyList``
+-------------------
 
-Test 2: Print the list in sorted order
-Input:
-my_list.print_sorted()
+Import the class:
+    >>> MyList = __import__('1-my_list').MyList
 
-Expected Output:
-[1, 2, 3, 4, 5]
+Test empty list:
+    >>> my_list = MyList()
+    >>> my_list.print_sorted()
+    []
 
-Test 3: Check if the original list remains unchanged
-Input:
-print(my_list)
+Test normal list:
+    >>> my_list = MyList([1, 4, 2, 3, 5])
+    >>> my_list.print_sorted()
+    [1, 2, 3, 4, 5]
+    >>> print(my_list)
+    [1, 4, 2, 3, 5]
 
-Expected Output:
-[1, 4, 2, 3, 5]
+Test list with negative numbers:
+    >>> my_list = MyList([-1, -4, -2, -3, -5])
+    >>> my_list.print_sorted()
+    [-5, -4, -3, -2, -1]
+    >>> print(my_list)
+    [-1, -4, -2, -3, -5]
 
+Test list with mixed numbers:
+    >>> my_list = MyList([-1, 2, -3, 4, -5])
+    >>> my_list.print_sorted()
+    [-5, -3, -1, 2, 4]
+    >>> print(my_list)
+    [-1, 2, -3, 4, -5]
+
+Test list with one element:
+    >>> my_list = MyList([1])
+    >>> my_list.print_sorted()
+    [1]
+    >>> print(my_list)
+    [1]
+
+Test list with repeated numbers:
+    >>> my_list = MyList([1, 1, 1, 1])
+    >>> my_list.print_sorted()
+    [1, 1, 1, 1]
+    >>> print(my_list)
+    [1, 1, 1, 1]
+
+Test append method:
+    >>> my_list = MyList()
+    >>> my_list.append(1)
+    >>> my_list.append(4)
+    >>> my_list.append(2)
+    >>> my_list.append(3)
+    >>> my_list.append(5)
+    >>> print(my_list)
+    [1, 4, 2, 3, 5]
+    >>> my_list.print_sorted()
+    [1, 2, 3, 4, 5]
+    >>> print(my_list)
+    [1, 4, 2, 3, 5]
